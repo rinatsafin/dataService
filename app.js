@@ -6,26 +6,26 @@ class DataService {
   }
 
   getUser(id) {
-    const link = `/users/${id}`;
+    const endpoint = `/users/${id}`;
     const errorMessage = "Не удалось получить данные пользователя! :("
-    return this.fetchData(link, errorMessage);
+    return this.fetchData(endpoint, errorMessage);
   }
 
   getPost(userId) {
-    const link = `/posts?userId=${userId}`;
+    const endpoint = `/posts?userId=${userId}`;
     const errorMessage = "Не удалось получить посты пользователя! :("
-    return this.fetchData(link, errorMessage);
+    return this.fetchData(endpoint, errorMessage);
   }
   
   getComments(postId) {
-    const link = `/comments?postId=${postId}`;
+    const endpoint = `/comments?postId=${postId}`;
     const errorMessage = "Не удалось получить комментарии пользовтеля! :("
-    return this.fetchData(link, errorMessage);
+    return this.fetchData(endpoint, errorMessage);
   }
 
-  async fetchData(link, errorMessage) {
+  async fetchData(endpoint, errorMessage) {
     try {
-      let response = await fetch(this.url + link);
+      let response = await fetch(this.url + endpoint);
       return await response.json();
     } catch(error) {
       throw new Error(errorMessage);
